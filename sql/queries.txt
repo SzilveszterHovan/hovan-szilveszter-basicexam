@@ -1,0 +1,27 @@
+1,
+SELECT manufacturer, count(id) AS Darab
+FROM `transport`
+WHERE manufacturer NOT LIKE ""
+GROUP BY manufacturer
+
+2,
+SELECT  model, manufacturer, image
+FROM `transport`
+ORDER BY cargo_capacity DESC
+LIMIT 3
+
+3,
+SELECT model as Típus
+FROM `transport` 
+WHERE crew='1' && cargo_capacity='1' && passengers ='1' && max_atmosphering_speed='1' && (manufacturer LIKE 'A%' OR manufacturer LIKE 'B%' OR manufacturer LIKE 'C%')
+SELECT model as Típus
+FROM `transport` 
+WHERE crew='1' && (manufacturer LIKE 'A%' OR manufacturer LIKE 'B%' OR manufacturer LIKE 'C%')
+
+4,
+SELECT *
+FROM `transport`
+WHERE manufacturer LIKE "%Corporation%" && passengers >'0' && cost_in_credits BETWEEN '10000'AND'20000'
+
+5,
+SELECT model as Megnevezés, manufacturer as Gyártó FROM `transport` WHERE crew BETWEEN '1' AND '5' && passengers IS NOT NULL GROUP BY crew LIMIT 3
