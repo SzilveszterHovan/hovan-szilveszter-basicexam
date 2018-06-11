@@ -20,13 +20,18 @@ function successAjax(xhttp) {
   createShipBox(userDatas);
   crewcount(userDatas)
   console.log(crewcount(userDatas))
+  passengerSum(userDatas);
   var statistic = document.createElement('div')
   var crewOne = document.createElement('div')
+  var Passenger = document.createElement('div')
   statistic.className = 'StatisticBox';
   document.querySelector('.shapceship-list').appendChild(statistic);
 
   statistic.appendChild(crewOne);
-  crewOne.innerHTML = crewResult
+  statistic.appendChild(Passenger);
+  crewOne.innerHTML = crewResult;
+
+  Passenger.innerHTML = passSum;
 
 
 }
@@ -132,6 +137,14 @@ function crewcount(arr) {
     }
   }
   return crewResult
+}
+var passSum;
+
+function passengerSum(arr) {
+
+  for (var i = 0; i < arr.length; i++) {
+    passSum += arr[i].passengers;
+  }
 }
 
 getData('/json/spaceships.json', successAjax);
